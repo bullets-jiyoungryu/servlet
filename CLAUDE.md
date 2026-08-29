@@ -38,6 +38,8 @@ Boot 3.x 예제/강의 코드를 그대로 옮기면 깨지는 지점이 있다.
 
 - 스타터 이름이 바뀌었다: `spring-boot-starter-webmvc`(← `-web`), `spring-boot-starter-webmvc-test`(← `-test`), `spring-boot-starter-tomcat-runtime`(← `-tomcat`).
 - `@ServletComponentScan`이 `org.springframework.boot.web.server.servlet.context` 패키지로 이동했다 (← `org.springframework.boot.web.servlet`). import를 옛 경로로 쓰면 컴파일이 안 된다.
+- Jackson이 3.x다. `ObjectMapper`는 `tools.jackson.databind`에서 import 한다 (← `com.fasterxml.jackson.databind`).
+- JSP를 쓰려면 `tomcat-embed-jasper` + `org.glassfish.web:jakarta.servlet.jsp.jstl`을 추가한다. 강의의 `javax.servlet:jstl`은 Boot 4 BOM의 관리 대상이 아니라 버전이 해석되지 않고 `Could not find javax.servlet:jstl:`로 `compileClasspath` 구성부터 실패한다.
 - Lombok은 main/test 양쪽에 `compileOnly` + `annotationProcessor`로 설정되어 있으니 바로 쓸 수 있다.
 
 ### WAR 패키징 구성
